@@ -7,7 +7,7 @@ from csv import DictReader
 
 class Row(object):
     """
-    Row Object
+    Row Object, placeholder
     """
 
 class Main:
@@ -47,15 +47,14 @@ class Main:
 
         self.fieldnames += list(seenvariables - fieldnames)
 
-        print '\t'.join(self.fieldnames)
+        yield '\t'.join(self.fieldnames)
         for line in self.reader2:
             line.update(extra[self.reader.line_num])
             yield '\t'.join([line.get(var, '') for var in self.fieldnames])
 
 
     def main(self):
-        g = self.gen_line()
-        for line in g:
+        for line in self.gen_line():
             print line
 
 
